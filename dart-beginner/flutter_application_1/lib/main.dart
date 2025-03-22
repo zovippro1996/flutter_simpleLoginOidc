@@ -2,6 +2,31 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+enum PlanetType { terrestrial, gas, ice }
+
+enum Planet {
+  mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  venus(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  earth(planetType: PlanetType.terrestrial, moons: 5, hasRings: false),
+  uranus(planetType: PlanetType.terrestrial, moons: 27, hasRings: true),
+  neptune(planetType: PlanetType.terrestrial, moons: 14, hasRings: true);
+
+  // A constant generating constructor
+  const Planet({
+    required this.planetType,
+    required this.moons,
+    required this.hasRings,
+  });
+
+  final PlanetType planetType;
+  final int moons;
+  final bool hasRings;
+
+  // Enhanced enums support getters and other methods.
+  bool get isGiant =>
+      planetType == PlanetType.gas || planetType == PlanetType.ice;
+}
+
 void main() {
   var name = 'Voyager I';
   var year = 1977;
@@ -43,6 +68,12 @@ void main() {
   var voyager3 = Spacecraft.unlaunched('Voyager III');
 
   voyager3.describe();
+
+  final yourPlanet = Planet.earth;
+
+  if (!yourPlanet.isGiant) {
+    print('Your planet is not a "giant planet".');
+  }
 
   print('Hello, World!');
   // runApp(const MainApp());
