@@ -92,9 +92,9 @@ class Spacecraft {
   int? get launchYear => launchDate?.year;
 
   // Constructor
-  Spacecraft(this.name, this.launchDate) {}
+  Spacecraft(this.name, this.launchDate);
 
-  // Named constructored
+  // Named constructor
   Spacecraft.unlaunched(String name) : this(name, null);
 
   // Method.
@@ -109,6 +109,12 @@ class Spacecraft {
       print('Unlaunched');
     }
   }
+}
+
+class Orbiter extends Spacecraft {
+  double altitude;
+
+  Orbiter(super.name, DateTime super.launchDate, this.altitude);
 }
 
 class MainApp extends StatelessWidget {
