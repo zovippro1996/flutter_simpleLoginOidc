@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  
+  try {
+    throw '!';
+  } catch (_) {
+    print('oops');
+  }
 
   // runApp(const MainApp());
 }
